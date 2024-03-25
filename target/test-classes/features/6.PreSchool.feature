@@ -13,9 +13,9 @@ Feature: Find Preschool Locator
     Then user should be on "<preschool>" tab
     And user search for "<city>"
     And click on findmy preschool
-    Then User should see preschools in "<expectedcity>"
+    Then User should see preschools in "<expectedText>"
 
     Examples: 
-      | city      |expectedcity|preschool|
+      | city      |expectedText|preschool|
       | Agra      |            |				 |
       

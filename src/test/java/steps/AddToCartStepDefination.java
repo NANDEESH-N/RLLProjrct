@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import io.cucumber.java.en.Then;
@@ -43,10 +44,10 @@ public class AddToCartStepDefination {
 	}
 
 	@Then("{string} should be added to my cart")
-	public void should_be_added_to_my_cart(String string) throws InterruptedException {
+	public void should_be_added_to_my_cart(String expectedTitle) throws InterruptedException {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-		hp.clickonCart();
-		String expectedresult = string;
+	        String actualTitle = driver.getTitle();
+	        Assert.assertEquals(expectedTitle, actualTitle);
 		hp.clickOnFirstcryIcon();
 		hp.hovertoMyAccount();
 		hp.clickOnLogout();

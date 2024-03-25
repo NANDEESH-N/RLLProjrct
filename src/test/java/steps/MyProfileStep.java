@@ -60,11 +60,14 @@ public class MyProfileStep {
 	   prp.clickOnSave();
 	}
 
+	
+	
 	@Then("User can view the {string}")
-	public void user_can_view_the(String string) throws InterruptedException {
-		String expectedresult=string;
-		
-		prp.clickonLogutprofile();
-	}
+	public void user_can_view_the(String expectedTitle) throws InterruptedException {
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(expectedTitle, actualTitle);
+        hp.clickOnFirstcryIcon();
+        prp.clickonLogutprofile();					
+}
 
 }

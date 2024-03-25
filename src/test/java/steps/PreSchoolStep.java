@@ -2,6 +2,7 @@ package steps;
 
 import java.util.ArrayList;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.en.Then;
@@ -54,13 +55,13 @@ public class PreSchoolStep {
 	
 
 	@Then("User should see preschools in {string}")
-	public void user_should_see_preschools_in(String string) throws InterruptedException {
-		String expectedresult=string;
-		
-		ArrayList<String> tabs=new ArrayList<>(driver.getWindowHandles());
-		driver.switchTo().window(tabs.get(0));
-		hp.clickOnFirstcryIcon();
-		hp.hovertoMyAccount();
-		hp.clickOnLogout();
-	}
+    public void user_should_see_preschools_in(String expectedText) throws InterruptedException {     
+    	   String actualText = ps.getLocatorHeaderText();
+
+   	    Assert.assertEquals(expectedText, actualText);
+
+   	    hp.clickOnFirstcryIcon();
+   	    hp.hovertoMyAccount();
+   	    hp.clickOnLogout();
+   	}
 }

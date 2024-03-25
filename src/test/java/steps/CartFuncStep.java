@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -42,11 +43,16 @@ public class CartFuncStep {
 	    hp.clickonCart();
 	}
 	
-	@Then("user can see {string} in the cart")
-	public void user_can_see_in_the_cart(String string) {
-		String expectedresult=string;
-	}
 
+	@Then("the {string} should be changed")
+    public void user_can_see_in_the_cart(String expectedTitle) throws InterruptedException {
+		        String actualTitle = driver.getTitle();
+		        Assert.assertEquals(expectedTitle, actualTitle);
+		        hp.clickOnFirstcryIcon();
+		       
+		        hp.hovertoMyAccount();
+		        hp.clickOnLogout();
+		    }
 
 
 	@When("User move a product to the shortlist")

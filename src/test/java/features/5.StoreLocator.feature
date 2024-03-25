@@ -1,4 +1,4 @@
-@FirstCry
+ @FirstCry
 Feature: Find Stores
 
 Background:

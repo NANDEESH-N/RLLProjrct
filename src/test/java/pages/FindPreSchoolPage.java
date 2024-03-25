@@ -21,8 +21,8 @@ public class FindPreSchoolPage {
 	@FindBy(xpath = "//input[@class='serch-finder-btn']")
 	private WebElement citySearchBtn;
 	
-	@FindBy(xpath = "")
-	private WebElement anyPreSchool;
+	@FindBy(xpath = "//h1[normalize-space()='FirstCry Intellitots Preschools in Agra']")
+	private WebElement LocatoreText;
 
 	public FindPreSchoolPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -39,8 +39,7 @@ public class FindPreSchoolPage {
 		citySearchBtn.click();
 	}
 	
-	public void selectAnySchool() {
-		wait.until(ExpectedConditions.visibilityOf(anyPreSchool));
-		anyPreSchool.click();
-	}
+	public String getLocatorHeaderText() {
+        return LocatoreText.getText();
+    }
 }

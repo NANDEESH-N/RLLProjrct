@@ -2,6 +2,7 @@ package steps;
 
 import java.util.ArrayList;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.en.Then;
@@ -34,12 +35,13 @@ public class SearchStep {
 	}
 
 	@Then("title should be {string}")
-	public void title_should_be(String string) throws InterruptedException {
-		String expectedresult=string;
-//		ArrayList<String> tabs=new ArrayList<>(driver.getWindowHandles());
-//		driver.switchTo().window(tabs.get(0));
-		hp.clickOnFirstcryIcon();
-		hp.hovertoMyAccount();
-		hp.clickOnLogout();
-	}
+    public void title_should_be(String expectedTitle) throws InterruptedException {
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(expectedTitle, actualTitle);
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(0));
+        hp.clickOnFirstcryIcon();
+        hp.hovertoMyAccount();
+        hp.clickOnLogout();
+    }
 }

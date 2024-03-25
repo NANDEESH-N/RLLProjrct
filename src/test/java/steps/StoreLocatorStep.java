@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -37,9 +38,13 @@ public class StoreLocatorStep {
 		driver.switchTo().window(tabs.get(1));
 	}
 	@Then("User should be on storelocator page")
-	public void user_should_be_on_storelocator_page() {
-	   
-	}
+		public void user_should_be_on_storelocator_page(String expectedTitle) throws InterruptedException {
+	        String actualTitle = driver.getTitle();
+	        Assert.assertEquals(expectedTitle, actualTitle);
+	        hp.clickOnFirstcryIcon();
+	        hp.hovertoMyAccount();
+	        hp.clickOnLogout();
+	    }
 
 	@When("User select the {string},{string} and {string}")
 	public void user_select_the_and(String string, String string2, String string3) {
@@ -56,10 +61,14 @@ public class StoreLocatorStep {
 	}
 
 	@Then("User must be able to view the {string}")
-	public void user_must_be_able_to_view_the(String string) throws InterruptedException {
-		String expectedresult=string;
-		 hp.clickOnFirstcryIcon();
-		  hp.hovertoMyAccount();
-		  hp.clickOnLogout();
+	public void user_must_be_able_to_view_the(String expectedText) throws InterruptedException {
+
+	    String actualText = sp.getLocatorHeaderText();
+
+	    Assert.assertEquals(expectedText, actualText);
+
+	    hp.clickOnFirstcryIcon();
+	    hp.hovertoMyAccount();
+	    hp.clickOnLogout();
 	}
 }

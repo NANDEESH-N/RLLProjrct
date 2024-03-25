@@ -29,6 +29,8 @@ public class FindStoresPage {
 
 	@FindBy(xpath = "//input[@value='Search']")
 	private WebElement searchStoreBtn;
+	@FindBy(xpath="//label[@id='citynm']")
+	WebElement StoreName;
 
 	public FindStoresPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -56,5 +58,9 @@ public class FindStoresPage {
 		wait.until(ExpectedConditions.elementToBeClickable(searchStoreBtn));
 		searchStoreBtn.click();
 	}
+	public String getLocatorHeaderText() {
+        return StoreName.getText();
+    }
+
 
 }
